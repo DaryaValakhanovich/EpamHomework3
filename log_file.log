@@ -1,0 +1,8 @@
+Year 1:
+[Employee{name='Bob', position=Position{name='Programmer', salary=Salary{count=582,43}}, age=33}]
+Year 2:
+[Employee{name='Bob', position=Position{name='Programmer', salary=Salary{count=575,86}}, age=33}, Employee{name='Kate', position=Position{name='Programmer', salary=Salary{count=575,86}}, age=5}, Employee{name='Steve', position=Position{name='Designer', salary=Salary{count=775,29}}, age=64}]
+Year 3:
+[Employee{name='Kevin', position=Position{name='Programmer', salary=Salary{count=577,94}}, age=18}, Employee{name='Bob', position=Position{name='Programmer', salary=Salary{count=577,94}}, age=33}, Employee{name='Steve', position=Position{name='Designer', salary=Salary{count=780,82}}, age=64}]
+Year 4:
+[Employee{name='Kevin', position=Position{name='Programmer', salary=Salary{count=570,38}}, age=18}, Employee{name='Steve', position=Position{name='Designer', salary=Salary{count=790,23}}, age=64}]

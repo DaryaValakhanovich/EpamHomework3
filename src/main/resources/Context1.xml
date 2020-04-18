@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="salary1" class="task1.entities.Salary">
+        <constructor-arg type="double" value="#{T(java.lang.Math).random() * 1000.0 }"/>
+    </bean>
+    <bean id="salary2" class="task1.entities.Salary" autowire="byName">
+        <property name="count" value="#{T(java.lang.Math).random() * 1000.0 }"/>
+    </bean>
+    <bean id="position1" class="task1.entities.Position">
+        <constructor-arg type="java.lang.String" value="Programmer"/>
+        <constructor-arg type="task1.entities.Salary" ref="salary1"/>
+    </bean>
+    <bean id="position2" class="task1.entities.Position" autowire="byType">
+        <property name="name" value="Designer"/>
+        <property name="salary" ref="salary2"/>
+    </bean>
+
+    <bean id="employee1" class="task1.entities.Employee">
+        <constructor-arg type="java.lang.String" value="Bob"/>
+        <constructor-arg type="task1.entities.Position" ref="position1"/>
+        <constructor-arg type="int" value="#{T(java.lang.Math).random() * 100}"/>
+    </bean>
+    <bean id="employee2" class="task1.entities.Employee" autowire="constructor">
+        <constructor-arg type="java.lang.String" value="Kate"/>
+        <constructor-arg type="task1.entities.Position" ref="position1"/>
+        <constructor-arg type="int" value="#{T(java.lang.Math).random() * 100}"/>
+    </bean>
+    <bean id="employee3" class="task1.entities.Employee">
+        <constructor-arg type="java.lang.String" value="Steve"/>
+        <constructor-arg type="task1.entities.Position" ref="position2"/>
+        <constructor-arg type="int" value="#{T(java.lang.Math).random() * 100}"/>
+    </bean>
+    <bean id="employee4" class="task1.entities.Employee">
+        <constructor-arg type="java.lang.String" value="Kevin"/>
+        <constructor-arg type="task1.entities.Position" ref="position1"/>
+        <constructor-arg type="int" value="#{T(java.lang.Math).random() * 100}"/>
+    </bean>
+    <bean id="testEmployee" class="task1.entities.Employee">
+        <constructor-arg type="java.lang.String" value=""/>
+        <constructor-arg type="task1.entities.Position" ref="position2"/>
+        <constructor-arg type="int" value="17"/>
+    </bean>
+
+
+
+    <bean id="employeeService1" class="task1.services.EmployeeService">
+        <property name="employees">
+            <util:set set-class="java.util.HashSet">
+                <ref bean="employee1"/>
+            </util:set>
+        </property>
+    </bean>
+
+    <bean id="positionService1" class="task1.services.PositionService">
+        <property name="positions">
+            <util:set set-class="java.util.HashSet">
+                <ref bean="position1"/>
+                <ref bean="position2"/>
+            </util:set>
+        </property>
+    </bean>
+
+    <bean id="salaryService1" class="task1.services.SalaryService"/>
+</beans>
